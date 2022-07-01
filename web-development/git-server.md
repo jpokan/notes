@@ -6,6 +6,7 @@ Create a new `git` user, its better to have a different user to manage their own
     $ sudo adduser git
     $ su git
 ```
+
 Read [ssh](ssh.md) if you want to setup passwordless login to your git user.
 
 Create a --bare repository or copy the .git directory inside your working project.
