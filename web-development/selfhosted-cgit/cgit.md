@@ -4,6 +4,8 @@ Read more about [git-server](git-server.md). Skip if you already have experience
 
 #### Clone Cgit
 
+First clone cgit source.
+
 ```
 $ mkdir ~/src
 $ cd src

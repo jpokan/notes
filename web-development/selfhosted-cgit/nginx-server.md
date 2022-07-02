@@ -11,18 +11,25 @@ $ systemctl enable fcgiwrap
 $ systemctl start fcgiwrap
 ```
 
-This configuration assumes you already have a SSL certificate installed. If you haven't, consider getting one with [certbot](https://certbot.eff.org/).
-I followed [these instructions](/web-development/selfhosted-cgit/ssl.md).
-
 #### Install nginx
 ```
 $ sudo apt install nginx
 ```
 
-Then inside`/etc/nginx/sites-available` create a file with this:
+After installing nginx, your web server should be up and running. If you go to your RaspberryPi IP address, typing `192.168.1.x` in your browser, it should be serving you the nginx default website.
+> `x` represents the address number of your device.
+>
+> To find your ip address in your RaspberryPi, type `ifconfig` from the terminal and check the `inet` value.
+
+But..., this is only available from within our local area network or LAN. To make it accesible from anywhere else, we will need a few things:
+- [x] A domain pointing to our PUBLIC IP address. 
+- [x] Open some ports in our router to let traffic go through to our device.
+- [x] Secure your traffic to the device with a SSL certificate. Follow [these instructions](/web-development/selfhosted-cgit/ssl.md).
+
+Once you have all of the above we will create a new nginx web server configuration file called `cgit-server` inside `/etc/nginx/sites-available` with the following:
 ```
 server {
-    server_name  git.your_domain.com;
+    server_name your_domain.com;
 
     listen [::]:8443 ssl;
     listen 8443 ssl;
@@ -48,10 +55,34 @@ server {
 }
 ```
 
+Replace `your_domain` accordingly.
+
+Tell nginx to enable our new site by creating a symbolic link of this file to the enabled sites folder (this is nginx specific). 
+```
+$ ln -s /etc/nginx/sites-available/cgit-server /etc/nginx/sites-enabled
+```
+
+Restart the nginx server.
+```
+$ service nginx restart
+```
+
+Since our configuration was made to point to port 8443, we can access it by going to `192.168.1.x:8443`.
+
+Nginx service useful commands:
+```
+$ service nginx start
+$ service nginx status
+$ service nginx stop
+$ service nginx restart
+$ nginx -t                # test the configuration
+```
+
 #### Add a firewall
+
 Install `ufw` and enable it to block all ports and enable only the ones you will use.
 
-In this case, I will be allowing port 8443.
+In this case, I will be allowing port 8443 since we added this port in our nginx server configuration.
 ```sh
 $ apt install ufw
 $ ufw allow 8443
