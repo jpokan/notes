@@ -9,4 +9,4 @@ Use these tags to indicate the state of the post:
 - **:published:** if it is published
 
 --- tags ---
-##### :index:
+##### :index: :ready:
