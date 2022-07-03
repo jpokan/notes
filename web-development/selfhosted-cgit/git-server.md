@@ -2,28 +2,28 @@
 
 Create a new `git` user, its better to have a different user to manage their own job 
 
-```sh
+```
 $ sudo adduser git
 $ su git
 ```
 --- recomended ---
-Read [ssh](ssh.md) to secure access to your git-server.
+Read [ssh](https://git-scm.com/book/en/v2/Git-on-the-Server-Generating-Your-SSH-Public-Key) to secure access to your git-server.
 
 **Create** a --bare repository or copy the .git directory inside your working project.
 
-```sh
+```
 $ git clone --bare my_project my_project.git
 ```
 
 **Or copy** the .git directory inside your working project.
 
-```sh
+```
 $ cp -Rf my_project/.git my_project.git
 ```
 
 After the new --bare repository has been created, you can upload it to the server like this:
 
-```sh
+```
 $ scp -r my_project.git user@git.your_domain.com:/srv/git
 ```
 

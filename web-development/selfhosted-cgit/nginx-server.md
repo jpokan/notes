@@ -1,5 +1,7 @@
 # Nginx web server on a RaspberryPi 2B
 
+Because we want to use nginx to serve Cgit which uses CGI, we will need to add a wrapper around nginx. Bryan Brattlof explains it much better [here](https://bryanbrattlof.com/cgit-nginx-gitolite-a-personal-git-server/).
+
 #### Install FastCGI Wrapper
 ```
 $ sudo apt install fcgiwrap
@@ -16,15 +18,15 @@ $ systemctl start fcgiwrap
 $ sudo apt install nginx
 ```
 
-After installing nginx, your web server should be up and running. If you go to your RaspberryPi IP address, typing `192.168.1.x` in your browser, it should be serving you the nginx default website.
+After installing nginx, your web server should be up and running. Type the IP address of your RaspberryPi `192.168.1.x` in your browser, it should be serving you the nginx default website.
 > `x` represents the address number of your device.
 >
-> To find your ip address in your RaspberryPi, type `ifconfig` from the terminal and check the `inet` value.
+> To find the IP address of your RaspberryPi, type `ifconfig` in the terminal and check the `inet` value.
 
 But..., this is only available from within our local area network or LAN. To make it accesible from anywhere else, we will need a few things:
-- [x] A domain pointing to our PUBLIC IP address. 
-- [x] Open some ports in our router to let traffic go through to our device.
-- [x] Secure your traffic to the device with a SSL certificate. Follow [these instructions](/web-development/selfhosted-cgit/ssl.md).
+- [x] A domain pointing to our PUBLIC IP address. See [how](domain.md).
+- [x] Open ports in our router to let traffic go through and to our RaspberryPi. See [port forwarding](port-forwarding.md).
+- [x] Secure your traffic with a SSL certificate. Follow [these instructions](/web-development/selfhosted-cgit/ssl.md).
 
 Once you have all of the above we will create a new nginx web server configuration file called `cgit-server` inside `/etc/nginx/sites-available` with the following:
 ```
@@ -55,19 +57,19 @@ server {
 }
 ```
 
-Replace `your_domain` accordingly.
+Replace `your_domain` accordingly in the `server_name` and `ssl_certificate/_key`.
 
-Tell nginx to enable our new site by creating a symbolic link of this file to the enabled sites folder (this is nginx specific). 
+We will also need to tell nginx to enable our new site. To do this, create a symbolic link of this file to the directory where nginx looks for the enabled sites (this is nginx specific). 
 ```
 $ ln -s /etc/nginx/sites-available/cgit-server /etc/nginx/sites-enabled
 ```
 
-Restart the nginx server.
+In order for nginx to know about the new site, we must restart the server.
 ```
 $ service nginx restart
 ```
 
-Since our configuration was made to point to port 8443, we can access it by going to `192.168.1.x:8443`.
+Since our configuration was made to point to port 8443, we can access it by going to `https://192.168.1.x:8443`.
 
 Nginx service useful commands:
 ```
@@ -80,14 +82,20 @@ $ nginx -t                # test the configuration
 
 #### Add a firewall
 
-Install `ufw` and enable it to block all ports and enable only the ones you will use.
-
-In this case, I will be allowing port 8443 since we added this port in our nginx server configuration.
+To add an extra layer of security to our RaspberryPi or server, we can use a firewall.
+We can do this by installing `ufw` and enable it to block all ports and tell it to use some ports.
+In this case, I will be allowing port 22(ssh), 80(http) and 8443(https) since we added those ports in our router and in our nginx server configuration.
 ```sh
-$ apt install ufw
-$ ufw allow 8443
-$ ufw enable
+$ sudo apt install ufw
+$ sudo ufw allow ssh
+$ sudo ufw allow 80/tcp
+$ sudo ufw allow 8443/tcp
+$ sudo ufw enable
 ```
+
+Tip: you can use `$ sudo ufw verbose` to check which ports have been enabled.
+
+This is all for now, but you can do much more with nginx.
 
 ##### reference links ---
 - [git server setup](https://git-scm.com/book/en/v2/Git-on-the-Server-Setting-Up-the-Server)
