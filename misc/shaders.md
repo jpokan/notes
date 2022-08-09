@@ -7,3 +7,8 @@ Vertex shader:
 Fragment shader:
 - Uniforms
 - Varyings
+
+
+--- tags ---
+##### :shaders:
+
