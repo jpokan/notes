@@ -1,9 +1,8 @@
 # Motion 101
 
 ##### Vectors
-They have:
 - a direction (angle relative to origin point)
-- and magnitud ($\ |{\vec{v}}| = \sqrt{x^2+y^2}$)
+- and magnitud `$\ |{\vec{v}}| = \sqrt{x^2+y^2}$`
 
 ##### Position
 Position is a point in space.
@@ -32,6 +31,22 @@ Because we are now adding the acceleration vector to the velocity vector on each
 ##### Composing the motion
 new position = current position + (velocity + acceleration)
 
+##### Newtons second law
+
+A force ${\vec{F}}$ is a vector that causes an object with mass to accelerate.
+
+$\ {\vec{F}} = M \times {\vec{A}}$
+
+We can also write this as:
+
+$\ {\vec{A}} = {\vec{F} \over M}$
+
+```
+float m = 1.0; // mass
+vec2 frc = vec2(x,y); // force, wind, gravity, etc
+vec2 acc = frc / m; // acceleration
+vec2 new_pos = pos + (vel + acc);
+```
 
 --- tags ---
 ##### :motion: :vectors: :acceleration: :velocity: :magnitud: :direction:
