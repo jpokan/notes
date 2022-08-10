@@ -13,7 +13,7 @@ vec2 pos = vec2(x,y);
 ### Velocity
 Use velocity to change the position of a point every render frame or through time.
 
-```
+```glsl
 vec2 vel = vec2(x,y);
 vec2 new_pos = pos + vel; // new position = position + velocity
 ```
@@ -22,7 +22,7 @@ This means that on each render frame, the point or position will move in a const
 ### Acceleration
 Acceleration can be considered as the change of the velocity vector through time.
 
-```
+```glsl
 vec2 acc = vec2(x,y);
 vec2 new_pos = pos + (vel + acc); // new position = position + (velocity + acceleration)
 ```
@@ -35,6 +35,7 @@ new position = current position + (velocity + acceleration)
 ### Newtons second law
 
 A force ${\vec{F}}$ is a vector that causes an object with mass to accelerate.
+This force could be the wind, gravity or any force you would like to apply to the position of point in space.
 
 $\ {\vec{F}} = M \times {\vec{A}}$
 
@@ -42,7 +43,7 @@ We can also write this as:
 
 $\ {\vec{A}} = {\vec{F} \over M}$
 
-```
+```glsl
 float m = 1.0; // mass
 vec2 frc = vec2(x,y); // force, wind, gravity, etc
 vec2 acc = frc / m; // acceleration
