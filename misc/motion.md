@@ -7,7 +7,7 @@
 ### Position
 Position is a point in space.
 
-```java
+```glsl
 vec2 pos = vec2(x,y);
 ```
 ### Velocity
