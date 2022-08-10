@@ -2,7 +2,7 @@
 
 ##### Vectors
 - a direction (angle relative to origin point)
-- and magnitud `$\ |{\vec{v}}| = \sqrt{x^2+y^2}$`
+- and magnitud $\ |{\vec{v}}| = \sqrt{x^2+y^2}$
 
 ##### Position
 Position is a point in space.
