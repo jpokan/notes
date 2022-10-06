@@ -2,5 +2,6 @@
 
 - [ ] Auto biography/story app
 - [ ] Masterkey on Tauri
-- [ ] Curated Castles site
+- [ ] @[Curated Castles site](castles.md)
+- [ ] Interior design layout sketcher/planner
 
