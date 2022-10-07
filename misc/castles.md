@@ -2,7 +2,7 @@
 
 - Design an object structure for each castle
     - Index / code | STR
-    - Title | STR
+    - Name | STR
     - Location
         - Country | STR
         - City | STR
