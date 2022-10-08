@@ -1,6 +1,6 @@
 # Curated castles site
 
-- Design an object structure for each castle
+- [x] Design an object structure for each castle
     - Index / code | STR
     - Name | STR
     - Location
@@ -12,8 +12,9 @@
     - Source of data (link) | STR
     - List of images (links) | STR
 ---
-- Design a home page layout
-- Design a per project detail layout
+- [ ] Design a home page layout
+- [ ] Design a per project detail layout
+- [ ] Implement design in a Nuxt project with Storyblok as CMS
 
 ### Process
 1. Search
