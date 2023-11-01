@@ -1,4 +1,4 @@
-# Notes index
+# Notes
 
 [Blog](/blog/index.md) - Articles of blog posts.
 
