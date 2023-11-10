@@ -8,8 +8,8 @@ Threejs Shader Demos
 - vt-instancing.netlify.app
 - vt-vector-field.netlify.app
 - vt-flow-field.netlify.app
-- vt-wind.netlify.app
 
 Threejs Demos
 - vt-villa-savoye.netlify.app
 - vt-scene-totoro.netlify.app
+
