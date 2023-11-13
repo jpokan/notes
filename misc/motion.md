@@ -42,8 +42,8 @@ If we have two points in space, lets say a vertex position $P(p_x,p_y)$ and an a
 
 - $\vec{v} = (vx, vy)$
 - $\vec{v} = \vec{attractor} - \vec{position}$
-> the direction from point $A$ to $P$ is vector $\vec{v}$ and is also equal to the attractor vector minus the position vector.    
-### Newton's second law
+> the direction from point $A$ to $P$ is vector $\vec{v}$ and is also equal to the attractor vector minus the position vector.
+Newton's second law
 
 A force ${\vec{F}}$ is a vector that causes an object with mass to accelerate.
 This force could be the wind, gravity or any force you would like to apply to the position of point in space.
