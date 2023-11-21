@@ -1,6 +1,6 @@
 # Git server on a Raspberry Pi 2B
 
-Create a new `git` user, its better to have a different user to manage their own job 
+Create a new `git` user, its better to have a different user to manage their own job
 
 ```
 $ sudo adduser git

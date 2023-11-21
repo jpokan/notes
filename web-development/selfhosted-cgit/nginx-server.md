@@ -59,7 +59,7 @@ server {
 
 Replace `your_domain` accordingly in the `server_name` and `ssl_certificate/_key`.
 
-We will also need to tell nginx to enable our new site. To do this, create a symbolic link of this file to the directory where nginx looks for the enabled sites (this is nginx specific). 
+We will also need to tell nginx to enable our new site. To do this, create a symbolic link of this file to the directory where nginx looks for the enabled sites (this is nginx specific).
 ```
 $ ln -s /etc/nginx/sites-available/cgit-server /etc/nginx/sites-enabled
 ```

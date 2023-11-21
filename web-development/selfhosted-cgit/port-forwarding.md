@@ -10,7 +10,7 @@ Why we need to port forward and which ports?
 
 - We need to port forward port 80 for the http-01 challenge to create our SSL certificates, if your ISP blocks this port then you won't be able to complete the challenge and you won't get the certificates. See more about [challenge types](https://letsencrypt.org/docs/challenge-types/#http-01-challenge).
 
-- We need to port forward port 443 to access our web server with a clean URL like https://your-domain.com. Again, if it is blocked by your ISP, you can still make it work but with another port number like 8443 and your URL will be like this https://your-domain.com:8443. 
+- We need to port forward port 443 to access our web server with a clean URL like https://your-domain.com. Again, if it is blocked by your ISP, you can still make it work but with another port number like 8443 and your URL will be like this https://your-domain.com:8443.
 
 Anyways, to let the outside world access our local area network we need to open some specific ports.
 
@@ -34,3 +34,4 @@ Go back to [nginx server](nginx-server.md).
 
 --- tags ---
 ##### :port forward: :ssl:
+
